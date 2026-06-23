@@ -1,0 +1,140 @@
+<div class="container mt-5">
+  <!-- <div class="row">
+    <mat-card class="mb-3">
+      <mat-card-content><img mat-card-image [src]="studentObj.studyTable" alt=""></mat-card-content>
+    </mat-card>
+  </div> -->
+  <div class="row">
+    <div class="col-md-4">
+      <mat-card>
+        <mat-card-content>
+          <img mat-card-image [src]="studentObj.imageUrl" alt="" />
+          <p class="text-center">
+            <strong
+              >{{ studentObj.firstName }} {{ studentObj.lastName }}</strong
+            >
+          </p>
+          <p class="d-flex justify-content-between align-items-center mb-2">
+            <span class="d-flex align-items-center">
+              <mat-icon class="me-2">badge</mat-icon>
+              Roll No
+            </span>
+
+            <strong>{{ studentObj.id }}</strong>
+          </p>
+          <p class="d-flex justify-content-between align-items-center">
+            <span class="d-flex align-items-center">
+              <mat-icon class="me-2">mail</mat-icon>
+              Email
+            </span>
+
+            <strong>{{ studentObj.email }}</strong>
+          </p>
+
+          <p class="d-flex justify-content-between align-items-center">
+            <span class="d-flex align-items-center">
+              <mat-icon class="me-2">call</mat-icon>
+              Phone
+            </span>
+
+            <strong>{{ studentObj.phone }}</strong>
+          </p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions class="d-flex justify-content-between">
+          <button
+          routerLink="edit"
+           mat-raised-button color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+          (click)="onRemoveStudent()"
+           mat-raised-button color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-md-8">
+      <mat-card class="mb-3">
+        <mat-card-content>
+          <h3 class="d-flex justify-content-between align-items-center mb-2">
+            <span class="d-flex align-items-center">
+              <mat-icon class="me-2">person</mat-icon>
+              Personal Informartion
+            </span>
+          </h3>
+          <p class="d-flex justify-content-between align-items-center mb-2">
+            <span class="d-flex align-items-center">
+              <mat-icon class="me-2">badge</mat-icon>
+              Name:
+            </span>
+
+            <strong
+              >{{ studentObj.firstName }} {{ studentObj.lastName }}</strong
+            >
+          </p>
+          <p class="d-flex justify-content-between align-items-center mb-2">
+            <span class="d-flex align-items-center">
+              <mat-icon class="me-2">cake</mat-icon>
+              Birth Date:
+            </span>
+
+            <strong>{{ studentObj.dateOfBirth | date }} </strong>
+          </p>
+          <p class="d-flex justify-content-between align-items-center mb-2">
+            <span class="d-flex align-items-center">
+              <mat-icon class="me-2">wc</mat-icon>
+              Gender:
+            </span>
+
+            <strong>{{ studentObj.gender }} </strong>
+          </p>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="mb-3">
+        <h3 class="d-flex justify-content-between align-items-center mb-2">
+          <span class="d-flex align-items-center">
+            <mat-icon class="me-2">inventory_2</mat-icon>
+            Academic Details Title
+          </span>
+        </h3>
+        <p class="d-flex justify-content-between align-items-center mb-2">
+          <span class="d-flex align-items-center">
+            <mat-icon class="me-2">code</mat-icon>
+            Skills:
+          </span>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip *ngFor="let skill of studentObj.skills">{{
+              skill
+            }}</mat-chip>
+          </mat-chip-list>
+        </p>
+        
+        <p class="d-flex justify-content-between align-items-center mb-2">
+          <span class="d-flex align-items-center">
+            <mat-icon class="me-2">rocket_launch</mat-icon>
+            Projects:
+          </span>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip *ngFor="let project of studentObj.projects">{{
+              project.title
+            }}</mat-chip>
+          </mat-chip-list>
+        </p>
+         <p class="d-flex justify-content-between align-items-center mb-2">
+          <span class="d-flex align-items-center">
+            <mat-icon class="me-2">sports_cricket</mat-icon>
+            Hobbies:
+          </span>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip *ngFor="let h of studentObj.hobbies">{{
+              h
+            }}</mat-chip>
+          </mat-chip-list>
+        </p>
+        </mat-card
+      >
+    </div>
+  </div>
+</div>

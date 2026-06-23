@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <div
+        class="card shadow-lg"
+        *ngIf="getAllStudents.length > 0; else noStudents"
+      >
+        <div class="card-body">
+          <ul class="list-group">
+            <li
+              [routerLink]="['/students', std.id]"
+              class="list-group-item"
+              *ngFor="let std of getAllStudents"
+            >
+              {{ std.firstName }} {{ std.lastName }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #noStudents>
+  <p class="alert alert-danger">NO STUDENTS IN DATABASE...!!!</p>
+</ng-template>
