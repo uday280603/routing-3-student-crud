@@ -11,6 +11,9 @@ import { NavbarComponent } from './shared/component/NAVBAR/navbar/navbar.compone
 import { RoutingModule } from './routing.module';
 import { GetConfirmComponent } from './shared/component/GETCONFIRM/get-confirm/get-confirm.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductDashboardComponent } from './shared/component/PRODUCT/product-dashboard/product-dashboard.component';
+import { ProductComponent } from './shared/component/PRODUCT/product/product.component';
+import { ProductFormComponent } from './shared/component/PRODUCT/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     StudentFormComponent,
     HomeDashboardComponent,
     NavbarComponent,
-    GetConfirmComponent
+    GetConfirmComponent,
+    ProductDashboardComponent,
+    ProductComponent,
+    ProductFormComponent
     
   ],
   imports: [
@@ -28,7 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     RoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   
   
 

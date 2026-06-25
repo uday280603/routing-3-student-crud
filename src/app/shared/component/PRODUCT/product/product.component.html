@@ -1,1 +1,48 @@
-<p>product works!</p>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <mat-card class="shadow">
+        <img
+          mat-card-image
+          [src]="productObj.productImage"
+          [alt]="productObj.productName"
+          style="height: 230px; object-fit: cover"
+        />
+
+        <mat-card-content class="p-3">
+          <h3>{{ productObj.productName }}</h3>
+
+          <p><strong>Id:</strong> {{ productObj.productId }}</p>
+
+          <p>
+            <strong>Description:</strong>
+            {{ productObj.productDescription }}
+          </p>
+
+          <p><strong>Price:</strong> ₹ {{ productObj.productPrice }}</p>
+
+          <p><strong>Warranty:</strong> {{ productObj.warranty }}</p>
+
+          <p>
+            <strong>Status:</strong>
+            {{ productObj.isAvailable ? 'Available' : 'Not Available' }}
+          </p>
+        </mat-card-content>
+
+        <mat-card-actions class="p-3 d-flex justify-content-between">
+          <button
+          routerLink="edit"
+           mat-raised-button color="primary" class="me-2">
+            Edit
+          </button>
+
+          <button 
+          (click)="onRemove()"
+          mat-raised-button color="warn">
+            Delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

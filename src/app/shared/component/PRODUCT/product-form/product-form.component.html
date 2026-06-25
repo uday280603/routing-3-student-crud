@@ -1,1 +1,180 @@
-<p>product-form works!</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="productForm" (ngSubmit)="onAddProduct()">
+            <div class="form-group">
+              <label for="productName">Product Name*</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="productName"
+                id="productName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="productImage">Product Image Url*</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="productImage"
+                id="productImage"
+              />
+            </div>
+            <div class="form-group">
+              <label for="productDescription">Product Description*</label>
+              <textarea
+                type="text"
+                class="form-control"
+                formControlName="productDescription"
+                id="productDescription"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="isAvailable">Is Available*</label>
+              <select
+                name="isAvailable"
+                id="isAvailable"
+                formControlName="isAvailable"
+                id="isAvailable"
+                class="form-control"
+              >
+                <option [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="productPrice">Product Price*</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="productPrice"
+                id="productPrice"
+              />
+            </div>
+            <div class="form-group">
+              <label for="warranty">Product warranty*</label>
+              <select
+                type="text"
+                class="form-control"
+                formControlName="warranty"
+                id="warranty"
+              >
+                <option value="1 Year">1 Year</option>
+                <option value="2 Year">2 Year</option>
+                <option value="3 Year">3 Year</option>
+                <option value="4 Year">4 Year</option>
+                <option value="5 Year">5 Year</option>
+              </select>
+            </div>
+            <div class="row mb-3">
+              <div
+                class="col-12 d-flex justify-content-between align-items-center"
+              >
+                <p class="font-weight-bold mb-0">Review*</p>
+                <button
+                  [disabled]="reviewsArray.invalid"
+                  *ngIf="reviewsArray.length < 3; else limitExid"
+                  type="button"
+                  mat-raised-button
+                  color="primary"
+                  (click)="onAddreviews()"
+                >
+                  Add Review
+                </button>
+              </div>
+            </div>
+            <div formArrayName="reviews">
+              <div *ngFor="let review of reviewsArray.controls; let i = index">
+                <div class="row" [formGroupName]="i">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="customerName"> Customer Name*</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="customerName"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="rating">Rating*</label>
+
+                      <select
+                        class="form-control"
+                        formControlName="rating"
+                        id="rating"
+                      >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="comment">Comment*</label>
+
+                      <select
+                        class="form-control"
+                        formControlName="comment"
+                        id="comment"
+                      >
+                        <option value="Very Good">Very Good</option>
+                        <option value="Good Product">Good Product</option>
+                        <option value="Average Product">Average Product</option>
+                        <option value="Nice Quality">Nice Quality</option>
+                        <option value="Value For Money">Value For Money</option>
+                        <option value="Fast Delivery">Fast Delivery</option>
+                        <option value="Product Is Useful">
+                          Product Is Useful
+                        </option>
+                        <option value="Not Good">Not Good</option>
+                        <option value="Poor Quality">Poor Quality</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group d-flex flex-column">
+                      <label style="opacity: 0"> Remove*</label>
+                      <button mat-raised-button color="warn" type="button" (click)="onRemoveReview(i)">
+                        Remove
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              *ngIf="!isInEditMode"
+              mat-raised-button
+              color="primary"
+              class="w-100"
+              type="submit"
+            >
+              Add Product
+            </button>
+            <button
+              type="button"
+              *ngIf="isInEditMode"
+              mat-raised-button
+              color="accent"
+              class="w-100"
+              (click)="onUpdate()"
+            >
+              Update Product
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #limitExid>
+  <p class="alert alert-danger">You can add only 3..!</p>
+</ng-template>

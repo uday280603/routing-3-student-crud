@@ -4,6 +4,9 @@ import { HomeDashboardComponent } from './shared/component/HOME/home-dashboard/h
 import { StudentComponent } from './shared/component/STUDENT/student/student.component';
 import { StudentDashboardComponent } from './shared/component/STUDENT/student-dashboard/student-dashboard.component';
 import { StudentFormComponent } from './shared/component/STUDENT/student-form/student-form.component';
+import { ProductDashboardComponent } from './shared/component/PRODUCT/product-dashboard/product-dashboard.component';
+import { ProductComponent } from './shared/component/PRODUCT/product/product.component';
+import { ProductFormComponent } from './shared/component/PRODUCT/product-form/product-form.component';
 
 const routes: Routes = [
   {
@@ -40,6 +43,27 @@ const routes: Routes = [
     path: 'students/:id/edit',
     component: StudentFormComponent,
   },
+  {
+    path: 'products',
+    component: ProductDashboardComponent,
+  },
+  
+  {
+    path: 'products/addProduct',
+    component: ProductFormComponent,
+    
+  },
+  {
+    path: 'products/:productId',
+    component: ProductComponent,
+ 
+  }
+  ,
+  {
+    path: 'products/:productId/edit',
+    component: ProductFormComponent,
+ 
+  }
 ];
 
 @NgModule({
