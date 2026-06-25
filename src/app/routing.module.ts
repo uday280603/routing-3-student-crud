@@ -13,12 +13,30 @@ const routes: Routes = [
   {
     path: 'students',
     component: StudentDashboardComponent,
+    children: [
+      {
+        path: 'addStudent',
+        component: StudentFormComponent,
+      },
+      {
+        path: ':id',
+        component: StudentComponent,
+      },
+      {
+        path: ':id/edit',
+        component: StudentFormComponent,
+      },
+    ],
+  },
+  {
+    path: 'students/addStudent',
+    component: StudentFormComponent,
   },
   {
     path: 'students/:id',
     component: StudentComponent,
   },
-   {
+  {
     path: 'students/:id/edit',
     component: StudentFormComponent,
   },

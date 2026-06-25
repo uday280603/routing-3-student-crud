@@ -66,7 +66,7 @@ export class StudentService {
           duration: '2 Months',
         },
       ],
-      hobbies: ['Reading', 'Cricket', 'Traveling']
+      hobbies: ['Reading', 'Cricket', 'Traveling'],
     },
 
     {
@@ -125,8 +125,7 @@ export class StudentService {
           duration: '5 Months',
         },
       ],
-      hobbies: ['Painting', 'Music', 'Yoga']
-
+      hobbies: ['Painting', 'Music', 'Yoga'],
     },
 
     {
@@ -185,7 +184,7 @@ export class StudentService {
           duration: '3 Months',
         },
       ],
-      hobbies: ['Football', 'Gaming', 'Photography']
+      hobbies: ['Football', 'Gaming', 'Photography'],
     },
   ];
 
@@ -198,12 +197,34 @@ export class StudentService {
     return of(studentObj);
   }
 
-  removeStudent(removeId : number) : Observable<Ires<Istudent>>{
-    let GETINDEX = this.studentsArr.findIndex(s => s.id === removeId);
-    let array = this.studentsArr.splice(GETINDEX,1);
+  removeStudent(removeId: number): Observable<Ires<Istudent>> {
+    let GETINDEX = this.studentsArr.findIndex((s) => s.id === removeId);
+    let array = this.studentsArr.splice(GETINDEX, 1);
     return of({
-      msg : `The student with id ${removeId} is removed successfully...!`,
-      data : array[0]
+      msg: `The student with id ${removeId} is removed successfully...!`,
+      data: array[0],
+    });
+  }
+
+  onCreateStudent(studentObj: Istudent): Observable<Ires<Istudent>> {
+    this.studentsArr.unshift(studentObj);
+    return of({
+      msg: `New student with id ${studentObj.id} is added succesfully..!`,
+      data: studentObj,
+    });
+  }
+
+  onPatchData(id: number): Observable<Istudent> {
+    let studentObj = this.studentsArr.find((s) => s.id === id)!;
+    return of(studentObj);
+  }
+
+  onUpdateStudent(updatedObj : Istudent) : Observable<Ires<Istudent>>{
+    let GETINDEX =this.studentsArr.findIndex(s => s.id === updatedObj.id);
+    this.studentsArr[GETINDEX]= updatedObj;
+    return of({
+      msg : `The sytudent with id ${updatedObj.id} is updated successfully..!`,
+      data : updatedObj
     })
   }
 }
