@@ -8,6 +8,73 @@ import { ProductDashboardComponent } from './shared/component/PRODUCT/product-da
 import { ProductComponent } from './shared/component/PRODUCT/product/product.component';
 import { ProductFormComponent } from './shared/component/PRODUCT/product-form/product-form.component';
 
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: HomeDashboardComponent,
+//   },
+//   {
+//     path: 'students',
+//     component: StudentDashboardComponent,
+//     children: [
+//       {
+//         path: 'addStudent',
+//         component: StudentFormComponent,
+//       },
+//       {
+//         path: ':id',
+//         component: StudentComponent,
+//       },
+//       {
+//         path: ':id/edit',
+//         component: StudentFormComponent,
+//       },
+//     ],
+//   },
+//   {
+//     path: 'students/addStudent',
+//     component: StudentFormComponent,
+//   },
+//   {
+//     path: 'students/:id',
+//     component: StudentComponent,
+//   },
+//   {
+//     path: 'students/:id/edit',
+//     component: StudentFormComponent,
+//   },
+//   {
+//     path: 'products',
+//     component: ProductDashboardComponent,
+//     children: [
+//       {
+//         path: 'addProduct',
+//         component: ProductFormComponent,
+//       },
+//       {
+//         path: ':productId',
+//         component: ProductComponent,
+//       },
+//       {
+//         path: ':productId/edit',
+//         component: ProductFormComponent,
+//       },
+//     ],
+//   },
+
+//   {
+//     path: 'products/addProduct',
+//     component: ProductFormComponent,
+//   },
+//   {
+//     path: 'products/:productId',
+//     component: ProductComponent,
+//   },
+//   {
+//     path: 'products/:productId/edit',
+//     component: ProductFormComponent,
+//   },
+// ];
 const routes: Routes = [
   {
     path: '',
@@ -32,40 +99,24 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'students/addStudent',
-    component: StudentFormComponent,
-  },
-  {
-    path: 'students/:id',
-    component: StudentComponent,
-  },
-  {
-    path: 'students/:id/edit',
-    component: StudentFormComponent,
-  },
-  {
     path: 'products',
     component: ProductDashboardComponent,
+    children: [
+      {
+        path: 'addProduct',
+        component: ProductFormComponent,
+      },
+      {
+        path: ':productId',
+        component: ProductComponent,
+      },
+      {
+        path: ':productId/edit',
+        component: ProductFormComponent,
+      },
+    ],
   },
-  
-  {
-    path: 'products/addProduct',
-    component: ProductFormComponent,
-    
-  },
-  {
-    path: 'products/:productId',
-    component: ProductComponent,
- 
-  }
-  ,
-  {
-    path: 'products/:productId/edit',
-    component: ProductFormComponent,
- 
-  }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

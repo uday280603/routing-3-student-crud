@@ -9,7 +9,7 @@
           <p class="alert alert-success text-center">Product List</p>
           <ul class="list-group">
             <li class="list-group-item"
-           
+            routerLinkActive="active"
              *ngFor="let product of getAllProducts"
              [routerLink]="['/products',product.productId]"
              >
@@ -21,7 +21,7 @@
       .
     </div>
     <div class="col-md-8">
-        Product Details
+        <router-outlet></router-outlet>
     </div>
   </div>
 </div>
