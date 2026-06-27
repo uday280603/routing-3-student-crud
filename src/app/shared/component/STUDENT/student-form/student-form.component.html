@@ -1,560 +1,555 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="card mb-3" style="background-color: #ffffff">
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card mb-3" style="background-color: #ffffff">
+          <div class="card-body">
+            <h3
+              class="d-flex align-items-center justify-content-center mb-0"
+              style="color: #1e3a8a"
+            >
+              <mat-icon class="me-2">school</mat-icon>
+              STUDENT REGISTRATION FORM
+            </h3>
+          </div>
+        </div>
+
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+          <div class="card mb-3">
             <div class="card-body">
-              <h3
-                class="d-flex align-items-center justify-content-center mb-0"
-                style="color: #1e3a8a"
-              >
-                <mat-icon class="me-2">school</mat-icon>
-                STUDENT REGISTRATION FORM
-              </h3>
+              <h3>Personal Information</h3>
+
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <label>First Name*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="firstName"
+                  />
+                  <strong
+                    *ngIf="
+                      c['firstName'].touched &&
+                      c['firstName'].hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    First name is required field..!
+                  </strong>
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <label>Last Name*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="lastName"
+                  />
+                  <strong
+                    *ngIf="
+                      c['lastName'].touched &&
+                      c['lastName'].hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    Last name is required field..!
+                  </strong>
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <label>Image Url*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="imageUrl"
+                  />
+                  <strong
+                    *ngIf="
+                      c['imageUrl'].touched &&
+                      c['imageUrl'].hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    Image url is required field..!
+                  </strong>
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <label>Email*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="email"
+                  />
+                  <strong
+                    *ngIf="
+                      c['email'].touched && c['email'].hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    Email is required field..!
+                  </strong>
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <label>Phone*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="phone"
+                  />
+                  <strong
+                    *ngIf="
+                      c['phone'].touched && c['phone'].hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    Phone number is required field..!
+                  </strong>
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <label>Date of Birth*</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    formControlName="dateOfBirth"
+                  />
+                  <strong
+                    *ngIf="
+                      c['dateOfBirth'].touched &&
+                      c['dateOfBirth'].hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    Date of birth is required field..!
+                  </strong>
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <label>Gender*</label>
+                  <select class="form-control" formControlName="gender">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <strong
+                    *ngIf="
+                      c['gender'].touched && c['gender'].hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    Select gender..!
+                  </strong>
+                </div>
+
+                <div class="col-md-6 form-group">
+                  <label>Blood Group*</label>
+                  <select class="form-control" formControlName="bloodGroup">
+                    <option value="">Select Blood Group</option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                  </select>
+                  <strong
+                    *ngIf="
+                      c['bloodGroup'].touched &&
+                      c['bloodGroup'].hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    Select blood group..!
+                  </strong>
+                </div>
+              </div>
             </div>
           </div>
 
-          <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
-            <div class="card mb-3">
-              <div class="card-body">
-                <h3>Personal Information</h3>
+          <div class="card mb-3" formGroupName="address">
+            <div class="card-body">
+              <h3>Address</h3>
 
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <label>First Name*</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="firstName"
-                    />
-                    <strong
-                      *ngIf="
-                        c['firstName'].touched &&
-                        c['firstName'].hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      First name is required field..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-6 form-group">
-                    <label>Last Name*</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="lastName"
-                    />
-                    <strong
-                      *ngIf="
-                        c['lastName'].touched &&
-                        c['lastName'].hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      Last name is required field..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-6 form-group">
-                    <label>Image Url*</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="imageUrl"
-                    />
-                    <strong
-                      *ngIf="
-                        c['imageUrl'].touched &&
-                        c['imageUrl'].hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      Image url is required field..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-6 form-group">
-                    <label>Email*</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="email"
-                    />
-                    <strong
-                      *ngIf="
-                        c['email'].touched && c['email'].hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      Email is required field..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-6 form-group">
-                    <label>Phone*</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="phone"
-                    />
-                    <strong
-                      *ngIf="
-                        c['phone'].touched && c['phone'].hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      Phone number is required field..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-6 form-group">
-                    <label>Date of Birth*</label>
-                    <input
-                      type="date"
-                      class="form-control"
-                      formControlName="dateOfBirth"
-                    />
-                    <strong
-                      *ngIf="
-                        c['dateOfBirth'].touched &&
-                        c['dateOfBirth'].hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      Date of birth is required field..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-6 form-group">
-                    <label>Gender*</label>
-                    <select class="form-control" formControlName="gender">
-                      <option value="">Select Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
-                    </select>
-                    <strong
-                      *ngIf="
-                        c['gender'].touched && c['gender'].hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      Select gender..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-6 form-group">
-                    <label>Blood Group*</label>
-                    <select class="form-control" formControlName="bloodGroup">
-                      <option value="">Select Blood Group</option>
-                      <option value="A+">A+</option>
-                      <option value="A-">A-</option>
-                      <option value="B+">B+</option>
-                      <option value="B-">B-</option>
-                      <option value="AB+">AB+</option>
-                      <option value="AB-">AB-</option>
-                      <option value="O+">O+</option>
-                      <option value="O-">O-</option>
-                    </select>
-                    <strong
-                      *ngIf="
-                        c['bloodGroup'].touched &&
-                        c['bloodGroup'].hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      Select blood group..!
-                    </strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card mb-3" formGroupName="address">
-              <div class="card-body">
-                <h3>Address</h3>
-
-                <div class="row">
-                  <div class="col-md-3 form-group">
-                    <label>Street*</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="street"
-                    />
-                    <strong
-                      *ngIf="
-                        c['address'].get('street')?.touched &&
-                        c['address'].get('street')?.hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      Street is required..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-3 form-group">
-                    <label>City*</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="city"
-                    />
-                    <strong
-                      *ngIf="
-                        c['address'].get('city')?.touched &&
-                        c['address'].get('city')?.hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      City is required..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-3 form-group">
-                    <label>State*</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="state"
-                    />
-                    <strong
-                      *ngIf="
-                        c['address'].get('state')?.touched &&
-                        c['address'].get('state')?.hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      State is required..!
-                    </strong>
-                  </div>
-
-                  <div class="col-md-3 form-group">
-                    <label>Pincode*</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="pincode"
-                    />
-                    <strong
-                      *ngIf="
-                        c['address'].get('pincode')?.touched &&
-                        c['address'].get('pincode')?.hasError('required')
-                      "
-                      class="text-danger"
-                    >
-                      Pincode is required..!
-                    </strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="card mb-3">
-              <div class="card-body">
-                <h3>Skills</h3>
-
-                <div formArrayName="skills">
-                  <div
-                    class="row mb-2"
-                    *ngFor="let skill of skillArr.controls; let i = index"
-                  >
-                    <div class="col-md-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        [formControlName]="i"
-                        placeholder="Enter skill"
-                      />
-                    </div>
-
-                    <div class="col-md-2">
-                      <button
-                        type="button"
-                        mat-raised-button
-                        color="warn"
-                        (click)="onRemoveSkills(i)"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  type="button"
-                  mat-raised-button
-                  color="primary"
-                  (click)="onAddSkills()"
-                >
-                  Add Skill
-                </button>
-              </div>
-            </div>
-
-            <div class="card mb-3">
-              <div class="card-body">
-                <h3>Education</h3>
-
-                <div formArrayName="education">
-                  <div
-                    class="row mb-3 border p-2"
-                    *ngFor="
-                      let education of educationArr.controls;
-                      let i = index
+              <div class="row">
+                <div class="col-md-3 form-group">
+                  <label>Street*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="street"
+                  />
+                  <strong
+                    *ngIf="
+                      c['address'].get('street')?.touched &&
+                      c['address'].get('street')?.hasError('required')
                     "
-                    [formGroupName]="i"
+                    class="text-danger"
                   >
-                    <div class="col-md-3">
-                      <label>Degree*</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="degree"
-                      />
-                    </div>
-
-                    <div class="col-md-3">
-                      <label>College*</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="college"
-                      />
-                    </div>
-
-                    <div class="col-md-2">
-                      <label>Year*</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        formControlName="year"
-                      />
-                    </div>
-
-                    <div class="col-md-2">
-                      <label>Percentage*</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        formControlName="percentage"
-                      />
-                    </div>
-
-                    <div class="col-md-2 mt-4">
-                      <button
-                        type="button"
-                        mat-raised-button
-                        color="warn"
-                        (click)="onRemoveEducation(i)"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  </div>
+                    Street is required..!
+                  </strong>
                 </div>
 
-                <button
-                  type="button"
-                  mat-raised-button
-                  color="primary"
-                  (click)="onAddEducation()"
-                >
-                  Add Education
-                </button>
-              </div>
-            </div>
-
-            <div class="card mb-3">
-              <div class="card-body">
-                <h3>Certifications</h3>
-
-                <div formArrayName="certifications">
-                  <div
-                    class="row mb-3 border p-2"
-                    *ngFor="
-                      let certification of certificationArr.controls;
-                      let i = index
+                <div class="col-md-3 form-group">
+                  <label>City*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="city"
+                  />
+                  <strong
+                    *ngIf="
+                      c['address'].get('city')?.touched &&
+                      c['address'].get('city')?.hasError('required')
                     "
-                    [formGroupName]="i"
+                    class="text-danger"
                   >
-                    <div class="col-md-4">
-                      <label>Certification Name*</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="name"
-                      />
-                    </div>
-
-                    <div class="col-md-4">
-                      <label>Issuer*</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="issuer"
-                      />
-                    </div>
-
-                    <div class="col-md-2">
-                      <label>Year*</label>
-                      <input
-                        type="number"
-                        class="form-control"
-                        formControlName="year"
-                      />
-                    </div>
-
-                    <div class="col-md-2 mt-4">
-                      <button
-                        type="button"
-                        mat-raised-button
-                        color="warn"
-                        (click)="onRemoveCertification(i)"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  </div>
+                    City is required..!
+                  </strong>
                 </div>
 
-                <button
-                  type="button"
-                  mat-raised-button
-                  color="primary"
-                  (click)="onAddCertification()"
-                >
-                  Add Certification
-                </button>
-              </div>
-            </div>
-
-            <div class="card mb-3">
-              <div class="card-body">
-                <h3>Projects</h3>
-
-                <div formArrayName="projects">
-                  <div
-                    class="row mb-3 border p-2"
-                    *ngFor="let project of projectArr.controls; let i = index"
-                    [formGroupName]="i"
+                <div class="col-md-3 form-group">
+                  <label>State*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="state"
+                  />
+                  <strong
+                    *ngIf="
+                      c['address'].get('state')?.touched &&
+                      c['address'].get('state')?.hasError('required')
+                    "
+                    class="text-danger"
                   >
-                    <div class="col-md-4">
-                      <label>Project Title*</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="title"
-                      />
-                    </div>
-
-                    <div class="col-md-3">
-                      <label>Technology*</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="technology"
-                      />
-                    </div>
-
-                    <div class="col-md-3">
-                      <label>Duration*</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        formControlName="duration"
-                      />
-                    </div>
-
-                    <div class="col-md-2 mt-4">
-                      <button
-                        type="button"
-                        mat-raised-button
-                        color="warn"
-                        (click)="onRemoveProject(i)"
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  </div>
+                    State is required..!
+                  </strong>
                 </div>
 
-                <button
-                  type="button"
-                  mat-raised-button
-                  color="primary"
-                  (click)="onAddProject()"
-                >
-                  Add Project
-                </button>
+                <div class="col-md-3 form-group">
+                  <label>Pincode*</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="pincode"
+                  />
+                  <strong
+                    *ngIf="
+                      c['address'].get('pincode')?.touched &&
+                      c['address'].get('pincode')?.hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    Pincode is required..!
+                  </strong>
+                </div>
               </div>
             </div>
+          </div>
 
-            <div class="card mb-3">
-              <div class="card-body">
-                <h3>Hobbies</h3>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3>Skills</h3>
 
-                <div formArrayName="hobbies">
-                  <div
-                    class="row mb-2"
-                    *ngFor="let hobby of hobbyArr.controls; let i = index"
-                  >
-                    <div class="col-md-10">
-                      <input
-                        type="text"
-                        class="form-control"
-                        [formControlName]="i"
-                        placeholder="Enter hobby"
-                      />
-                    </div>
+              <div formArrayName="skills">
+                <div
+                  class="row mb-2"
+                  *ngFor="let skill of skillArr.controls; let i = index"
+                >
+                  <div class="col-md-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [formControlName]="i"
+                      placeholder="Enter skill"
+                    />
+                  </div>
 
-                    <div class="col-md-2">
-                      <button
-                        type="button"
-                        mat-raised-button
-                        color="warn"
-                        (click)="onRemoveHobby(i)"
-                      >
-                        Remove
-                      </button>
-                    </div>
+                  <div class="col-md-2">
+                    <button
+                      type="button"
+                      mat-raised-button
+                      color="warn"
+                      (click)="onRemoveSkills(i)"
+                    >
+                      Remove
+                    </button>
                   </div>
                 </div>
-
-                <button
-                  type="button"
-                  mat-raised-button
-                  color="primary"
-                  (click)="onAddHobby()"
-                >
-                  Add Hobby
-                </button>
               </div>
-            </div>
 
-            <button
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                (click)="onAddSkills()"
+              >
+                Add Skill
+              </button>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3>Education</h3>
+
+              <div formArrayName="education">
+                <div
+                  class="row mb-3 border p-2"
+                  *ngFor="let education of educationArr.controls; let i = index"
+                  [formGroupName]="i"
+                >
+                  <div class="col-md-3">
+                    <label>Degree*</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="degree"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>College*</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="college"
+                    />
+                  </div>
+
+                  <div class="col-md-2">
+                    <label>Year*</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="year"
+                    />
+                  </div>
+
+                  <div class="col-md-2">
+                    <label>Percentage*</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="percentage"
+                    />
+                  </div>
+
+                  <div class="col-md-2 mt-4">
+                    <button
+                      type="button"
+                      mat-raised-button
+                      color="warn"
+                      (click)="onRemoveEducation(i)"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                (click)="onAddEducation()"
+              >
+                Add Education
+              </button>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3>Certifications</h3>
+
+              <div formArrayName="certifications">
+                <div
+                  class="row mb-3 border p-2"
+                  *ngFor="
+                    let certification of certificationArr.controls;
+                    let i = index
+                  "
+                  [formGroupName]="i"
+                >
+                  <div class="col-md-4">
+                    <label>Certification Name*</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="name"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label>Issuer*</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="issuer"
+                    />
+                  </div>
+
+                  <div class="col-md-2">
+                    <label>Year*</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="year"
+                    />
+                  </div>
+
+                  <div class="col-md-2 mt-4">
+                    <button
+                      type="button"
+                      mat-raised-button
+                      color="warn"
+                      (click)="onRemoveCertification(i)"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                (click)="onAddCertification()"
+              >
+                Add Certification
+              </button>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3>Projects</h3>
+
+              <div formArrayName="projects">
+                <div
+                  class="row mb-3 border p-2"
+                  *ngFor="let project of projectArr.controls; let i = index"
+                  [formGroupName]="i"
+                >
+                  <div class="col-md-4">
+                    <label>Project Title*</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="title"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>Technology*</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="technology"
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>Duration*</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="duration"
+                    />
+                  </div>
+
+                  <div class="col-md-2 mt-4">
+                    <button
+                      type="button"
+                      mat-raised-button
+                      color="warn"
+                      (click)="onRemoveProject(i)"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                (click)="onAddProject()"
+              >
+                Add Project
+              </button>
+            </div>
+          </div>
+
+          <div class="card mb-3">
+            <div class="card-body">
+              <h3>Hobbies</h3>
+
+              <div formArrayName="hobbies">
+                <div
+                  class="row mb-2"
+                  *ngFor="let hobby of hobbyArr.controls; let i = index"
+                >
+                  <div class="col-md-10">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [formControlName]="i"
+                      placeholder="Enter hobby"
+                    />
+                  </div>
+
+                  <div class="col-md-2">
+                    <button
+                      type="button"
+                      mat-raised-button
+                      color="warn"
+                      (click)="onRemoveHobby(i)"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                (click)="onAddHobby()"
+              >
+                Add Hobby
+              </button>
+            </div>
+          </div>
+
+          <button
             *ngIf="!isInEditMode"
-              type="submit"
-              mat-raised-button
-              color="primary"
-              class="w-100"
-            >
-              Submit
-            </button>
-             <button
-             *ngIf="isInEditMode"
-              type="button"
-              mat-raised-button
-              color="accent"
-              class="w-100"
-              (click)="onUpdate()"
-            >
-              Update
-            </button>
-          </form>
-        </div>
+            type="submit"
+            mat-raised-button
+            color="primary"
+            class="w-100"
+          >
+            Submit
+          </button>
+          <button
+            *ngIf="isInEditMode"
+            type="button"
+            mat-raised-button
+            color="accent"
+            class="w-100"
+            (click)="onUpdate()"
+          >
+            Update
+          </button>
+        </form>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Istudent } from 'src/app/shared/model/Istudent';
 import { StudentService } from 'src/app/shared/service/student.service';
 import { GetConfirmComponent } from '../../GETCONFIRM/get-confirm/get-confirm.component';
@@ -20,7 +20,7 @@ export class StudentComponent implements OnInit {
     private _studentservice: StudentService,
     private _matdialog: MatDialog,
     private _snackbar: SanckbarService,
-    private _router : Router
+    private _router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -28,11 +28,15 @@ export class StudentComponent implements OnInit {
   }
 
   getStudentById() {
-    this.studentId = +this._activated.snapshot.paramMap.get('id')!;
-    this._studentservice.getStudentById(this.studentId).subscribe({
-      next: (data) => {
-        this.studentObj = data;
-      },
+    // this.studentId = +this._activated.snapshot.paramMap.get('id')!;
+
+    this._activated.params.subscribe((params: Params) => {
+      this.studentId = +params['id']!;
+      this._studentservice.getStudentById(this.studentId).subscribe({
+        next: (data) => {
+          this.studentObj = data;
+        },
+      });
     });
   }
 
@@ -47,8 +51,7 @@ export class StudentComponent implements OnInit {
         this._studentservice.removeStudent(this.studentId).subscribe({
           next: (res) => {
             this._snackbar.openSnackBar(res.msg);
-            this._router.navigate(['/students'])
-            
+            this._router.navigate(['/students']);
           },
         });
       }

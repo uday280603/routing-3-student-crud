@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Iproduct } from 'src/app/shared/model/Iproduct';
 import { ProductService } from 'src/app/shared/service/productService';
 import { MatCardModule } from '@angular/material/card';
@@ -28,12 +28,14 @@ export class ProductComponent implements OnInit {
   }
 
   getProduct() {
-    this.productId = +this._activeRoutes.snapshot.paramMap.get('productId')!;
-    this._productService.fetchProductById(this.productId).subscribe({
-      next: (data) => {
-        this.productObj = data;
-      },
-    });
+     this._activeRoutes.params.subscribe((params : Params) =>{
+      this.productId = +params['productId']!;
+      this._productService.fetchProductById(this.productId).subscribe({
+        next : data =>{
+          this.productObj =data
+        }
+      })
+     })
   }
 
   onRemove() {
